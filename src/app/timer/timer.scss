@@ -1,0 +1,39 @@
+.timer-box {
+  width: auto;
+  margin-top: 6%;
+  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.circle {
+  width: 410px;
+  height: 410px;
+  border-radius: 50%;
+  box-shadow: -20px -20px 30px rgba(200, 220, 255, 0.05);
+  background: linear-gradient(145deg, #16172e, #3a3d6b);
+  position: relative;
+  border: 1px solid rgba(22, 25, 50, 0.6);
+
+  .inner-circle {
+    height: 366px;
+    width: 366px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: #161932;
+    position: absolute;
+    top: 22px;
+    left: 22px;
+
+    .progress-bar {
+      height: 336px;
+      width: 336px;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<div class="navbar-box">
+  <ul>
+    <li>
+      <button
+        class="btn"
+        [class.active]="activeBtn === 'pomodoro'"
+        (click)="setActive('pomodoro')"
+        data-time="1500"
+      >
+        pomodoro
+      </button>
+    </li>
+    <li>
+      <button
+        class="btn"
+        [class.active]="activeBtn === 'shortBreak'"
+        (click)="setActive('shortBreak')"
+        data-time="300"
+      >
+        short break
+      </button>
+    </li>
+    <li>
+      <button
+        class="btn"
+        [class.active]="activeBtn === 'longBreak'"
+        (click)="setActive('longBreak')"
+        data-time="900"
+      >
+        long break
+      </button>
+    </li>
+  </ul>
+</div>
