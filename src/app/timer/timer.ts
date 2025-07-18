@@ -33,4 +33,8 @@ export class Timer implements OnChanges {
         this.timeDisplay = '25:00';
     }
   }
+
+  countdown() {
+    console.log('this is the coutdown');
+  }
 }
