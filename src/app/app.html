@@ -1,8 +1,15 @@
 <div class="timer-box">
   <div class="title">pomodoro</div>
-  <app-navbar />
+
+  <app-navbar
+    [activeBtn]="activeBtn()"
+    (activeBtnChange)="setActiveBtn($event)"
+  >
+  </app-navbar>
+
   <div class="box">
-    <app-timer />
+    <app-timer [activeBtn]="activeBtn()"></app-timer>
   </div>
-  <router-outlet />
+
+  <router-outlet></router-outlet>
 </div>

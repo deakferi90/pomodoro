@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.scss',
+  styleUrls: ['./navbar.scss'],
 })
 export class Navbar {
-  activeBtn: string = 'pomodoro';
+  @Input() activeBtn!: string;
+  @Output() activeBtnChange = new EventEmitter<string>();
 
   setActive(btnName: string) {
-    this.activeBtn = btnName;
+    this.activeBtnChange.emit(btnName);
   }
 }
