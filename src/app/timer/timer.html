@@ -4,14 +4,9 @@
       <div class="displayItems">
         <div class="time">{{ timeDisplay }}</div>
         <div class="controls">
-          <button
-            (click)="startTimer()"
-            class="btn-play-pause"
-            [disabled]="isRunning"
-          >
+          <button (click)="toggleTimer()" class="btn-play-pause">
             {{ isRunning ? "Pause" : "Play" }}
           </button>
-          <!-- <button (click)="pauseTimer()" [disabled]="!isRunning">Pause</button> -->
         </div>
       </div>
     </div>

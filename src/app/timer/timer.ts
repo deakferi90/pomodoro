@@ -25,7 +25,7 @@ export class TimerComponent implements OnChanges, OnDestroy {
 
   timeDisplay: string = '25:00';
   progressPercent: number = 100;
-
+  private hasStartedOnce: boolean = false;
   private totalSeconds: number = 0;
   private secondsLeft: number = 0;
   private timerInterval: any = null;
@@ -39,6 +39,9 @@ export class TimerComponent implements OnChanges, OnDestroy {
     if (changes['activeBtn']) {
       this.setMode(this.activeBtn);
       this.resetTimer();
+      if (this.hasStartedOnce) {
+        this.startTimer();
+      }
     }
   }
 
@@ -51,16 +54,16 @@ export class TimerComponent implements OnChanges, OnDestroy {
 
     switch (mode) {
       case 'pomodoro':
-        this.totalSeconds = 25 * 1;
+        this.totalSeconds = 25 * 60;
         break;
       case 'shortBreak':
-        this.totalSeconds = 5 * 1;
+        this.totalSeconds = 5 * 60;
         break;
       case 'longBreak':
-        this.totalSeconds = 15 * 1;
+        this.totalSeconds = 15 * 60;
         break;
       default:
-        this.totalSeconds = 25 * 1;
+        this.totalSeconds = 25 * 60;
     }
     this.secondsLeft = this.totalSeconds;
     this.updateDisplay();
@@ -88,7 +91,7 @@ export class TimerComponent implements OnChanges, OnDestroy {
   startTimer() {
     if (this.isRunning) return;
     this.isRunning = true;
-
+    this.hasStartedOnce = true;
     this.ngZone.runOutsideAngular(() => {
       this.timerInterval = setInterval(() => {
         if (this.secondsLeft > 0) {
@@ -133,18 +136,26 @@ export class TimerComponent implements OnChanges, OnDestroy {
       this.pomodoroCount++;
       if (this.pomodoroCount % 4 === 0) {
         this.switchMode('longBreak');
+        this.startTimer();
       } else {
         this.switchMode('shortBreak');
+        this.startTimer();
       }
     } else {
       this.switchMode('pomodoro');
+      this.startTimer();
     }
   }
 
   switchMode(newMode: Mode) {
     this.modeChange.emit(newMode);
-    this.setMode(newMode);
-    this.resetTimer();
-    this.startTimer(); // auto start new mode countdown
+  }
+
+  toggleTimer() {
+    if (this.isRunning) {
+      this.pauseTimer();
+    } else {
+      this.startTimer();
+    }
   }
 }
