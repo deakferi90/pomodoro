@@ -7,9 +7,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class Navbar {
   @Input() activeBtn!: string;
-  @Output() activeBtnChange = new EventEmitter<string>();
+  @Output() activeBtnChange = new EventEmitter<
+    'pomodoro' | 'shortBreak' | 'longBreak'
+  >();
 
-  setActive(btnName: string) {
+  setActive(btnName: 'pomodoro' | 'shortBreak' | 'longBreak') {
     this.activeBtnChange.emit(btnName);
   }
 }

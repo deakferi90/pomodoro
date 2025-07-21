@@ -1,8 +1,19 @@
 <div class="circle">
   <div class="inner-circle">
-    <div class="progress-bar" style="--progress: 100%">
-      <div class="time">{{ timeDisplay }}</div>
-      <div class="play-pause" (click)="countdown()">{{ play }}</div>
+    <div class="progress-bar" [style.--progress]="progressPercent + '%'">
+      <div class="displayItems">
+        <div class="time">{{ timeDisplay }}</div>
+        <div class="controls">
+          <button
+            (click)="startTimer()"
+            class="btn-play-pause"
+            [disabled]="isRunning"
+          >
+            {{ isRunning ? "Pause" : "Play" }}
+          </button>
+          <!-- <button (click)="pauseTimer()" [disabled]="!isRunning">Pause</button> -->
+        </div>
+      </div>
     </div>
   </div>
 </div>
