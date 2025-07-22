@@ -29,6 +29,7 @@ export class TimerComponent implements OnChanges, OnDestroy {
   private totalSeconds: number = 0;
   private secondsLeft: number = 0;
   private timerInterval: any = null;
+  private isAutoSwitch: boolean = false;
   public isRunning: boolean = false;
 
   private pomodoroCount: number = 0;
@@ -39,8 +40,9 @@ export class TimerComponent implements OnChanges, OnDestroy {
     if (changes['activeBtn']) {
       this.setMode(this.activeBtn);
       this.resetTimer();
-      if (this.hasStartedOnce) {
+      if (this.hasStartedOnce && this.isAutoSwitch) {
         this.startTimer();
+        this.isAutoSwitch = false;
       }
     }
   }
@@ -132,6 +134,7 @@ export class TimerComponent implements OnChanges, OnDestroy {
   }
 
   handleTimerEnd() {
+    this.isAutoSwitch = true;
     if (this.activeBtn === 'pomodoro') {
       this.pomodoroCount++;
       if (this.pomodoroCount % 4 === 0) {
