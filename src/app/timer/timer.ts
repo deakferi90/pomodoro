@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -14,8 +15,10 @@ type Mode = 'pomodoro' | 'shortBreak' | 'longBreak';
 
 @Component({
   selector: 'app-timer',
+  standalone: true,
   templateUrl: './timer.html',
   styleUrls: ['./timer.scss'],
+  imports: [CommonModule],
 })
 export class TimerComponent implements OnChanges, OnDestroy {
   @Input() activeBtn!: Mode;

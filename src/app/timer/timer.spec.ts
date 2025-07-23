@@ -1,23 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TimerComponent } from './timer';
+import { CommonModule } from '@angular/common';
 
-import { Timer } from './timer';
-
-describe('Timer', () => {
-  let component: Timer;
-  let fixture: ComponentFixture<Timer>;
+describe('TimerComponent', () => {
+  let component: TimerComponent;
+  let fixture: ComponentFixture<TimerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Timer]
-    })
-    .compileComponents();
+      imports: [TimerComponent, CommonModule],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(Timer);
+    fixture = TestBed.createComponent(TimerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });

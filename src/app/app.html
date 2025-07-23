@@ -14,7 +14,11 @@
     ></app-timer>
   </div>
 
-  <button class="settings-button" pomodoroSettingsLauncher>
+  <button
+    class="settings-button"
+    (click)="openDialog()"
+    pomodoroSettingsLauncher
+  >
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28">
       <path
         fill="#D7E0FF"
