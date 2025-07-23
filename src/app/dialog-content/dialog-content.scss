@@ -1,0 +1,29 @@
+.dark-grey-line {
+  border: none;
+  border-top: 1px solid #979797;
+}
+
+.modal-title {
+  font-weight: bold !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.apply-btn {
+  display: flex;
+  justify-content: center;
+  background-color: #f87070;
+  color: white !important;
+  border-radius: 4px;
+}
+
+.apply-btn:hover {
+  background-color: #e55e5e;
+}
+
+::ng-deep .mat-mdc-dialog-inner-container {
+  overflow-y: hidden !important;
+  height: 464px !important;
+  width: 540px !important;
+  border-radius: 30px;
+}
